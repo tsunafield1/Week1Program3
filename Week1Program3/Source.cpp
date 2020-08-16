@@ -1,5 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+bool triangle(int sum,int t[]);
+int changeToDigit(char a);
 int main()
 {
 	int nub = 0,i = 0,sum = 0,t[100];
@@ -36,19 +38,25 @@ int main()
 			sum = 0;
 			for (int j = 0; j < i; j++) //Calculate word value
 			{
-				sum += w[j] - 64;
+				sum += changeToDigit(w[j]);
 			}
-			for (int j = 0; j < 100; j++) //Triangle?
-			{
-				if (sum < t[j])break;
-				else if (sum == t[j])
-				{
-					nub++;
-					break;
-				}
-			}
+			if (triangle(sum, t))nub++;
 		}
 		if (check)break;
 	}
 	printf("%d", nub);
+}
+bool triangle(int sum,int t[])
+{
+	for (int j = 0; j < 100; j++) //Triangle?
+	{
+		if (sum < t[j])break;
+		else if (sum == t[j])return 1;
+	}
+	return 0;
+}
+int changeToDigit(char a)
+{
+	int x = a - 64;  // 'A' == 65
+	return x;
 }
