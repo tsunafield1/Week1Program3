@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-bool triangle(int sum,int t[]);
-int changeToDigit(char a);
+bool triangle(int sum,int t[]); // Check that sum is triangle numbers 
+int changeToDigit(char a); // Change big alphabet to 1-26
 int main()
 {
 	int nub = 0,i = 0,sum = 0,t[100];
@@ -36,11 +36,11 @@ int main()
 				else if (in == '\"')break;
 			}
 			sum = 0;
-			for (int j = 0; j < i; j++) //Calculate word value
+			for (int j = 0; j < i; j++) //Calculate words value
 			{
 				sum += changeToDigit(w[j]);
 			}
-			if (triangle(sum, t))nub++;
+			if (triangle(sum, t))nub++; //Triangle?
 		}
 		if (check)break;
 	}
